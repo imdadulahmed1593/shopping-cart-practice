@@ -25,11 +25,11 @@
 
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id="mbl-minus" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="mbl" type="text" class="form-control text-center" value="1">
+                           <button id="mbl-plus" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$1219</h5>
+                        <h5>$<span id="current-mbl-price">1219</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -43,12 +43,12 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id="cvr-minus" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="cvr" type="text" class="form-control text-center" value="1">
+                           <button id="cvr-plus" class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
-                        <h5>$59</h5>
+                        <h5>$ <span id="current-cvr-price">59</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -64,9 +64,9 @@
                      </div>
 
                      <div class="col-md-4 status">
-                        <h5>$1,278</h5>
+                        <h5>$ <span id="current-sub">1,278</span></h5>
                         <h5>$0</h5>
-                        <h5>$1,278</h5>
+                        <h5>$ <span id="current-total">1,278</span></h5>
                      </div>
                   </div>
                </div>
@@ -77,6 +77,83 @@
          </div>
       </div>
    </section>
+   <script>
+      //add button handler
+      document.getElementById("mbl-plus").addEventListener("click", function () {
+         var currentNum = parseFloat(document.getElementById("mbl").value);
+         currentNum = currentNum + 1;
+         document.getElementById("mbl").value = currentNum;
+
+         function update(id) {
+            var currentPrice = parseFloat(document.getElementById(id).innerText.replace(/,/g, ''));
+            var updatePrice = currentPrice + 1219;
+            document.getElementById(id).innerText = updatePrice;
+         }
+
+         update("current-mbl-price");
+         update("current-sub");
+         update("current-total");
+
+
+      });
+
+      // minus button handler
+
+      document.getElementById("mbl-minus").addEventListener("click", function () {
+         var currentNum = parseFloat(document.getElementById("mbl").value);
+         currentNum = currentNum - 1;
+         document.getElementById("mbl").value = currentNum;
+
+         function updateMin(id) {
+            var currentPrice = parseFloat(document.getElementById(id).innerText.replace(/,/g, ''));
+            var updatePrice = currentPrice - 1219;
+            document.getElementById(id).innerText = updatePrice;
+         }
+
+         updateMin("current-mbl-price");
+         updateMin("current-sub");
+         updateMin("current-total");
+
+      });
+
+      //cvr-plus button handler
+
+      document.getElementById("cvr-plus").addEventListener("click", function () {
+         var currentNum = parseFloat(document.getElementById("cvr").value);
+         currentNum = currentNum + 1;
+         document.getElementById("cvr").value = currentNum;
+
+         function update(id) {
+            var currentPrice = parseFloat(document.getElementById(id).innerText.replace(/,/g, ''));
+            var updatePrice = currentPrice + 59;
+            document.getElementById(id).innerText = updatePrice;
+         }
+
+         update("current-cvr-price");
+         update("current-sub");
+         update("current-total");
+
+      });
+
+      // cvr-minus button handler
+
+      document.getElementById("cvr-minus").addEventListener("click", function () {
+         var currentNum = parseFloat(document.getElementById("cvr").value);
+         currentNum = currentNum - 1;
+         document.getElementById("cvr").value = currentNum;
+
+         function updateMin(id) {
+            var currentPrice = parseFloat(document.getElementById(id).innerText.replace(/,/g, ''));
+            var updatePrice = currentPrice - 59;
+            document.getElementById(id).innerText = updatePrice;
+         }
+
+         updateMin("current-cvr-price");
+         updateMin("current-sub");
+         updateMin("current-total");
+
+      });
+   </script>
 </body>
 
 </html>
